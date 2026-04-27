@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soil Fertility Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #66af4c, #437d2ecf);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 350px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.81);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #7d2e2e;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;   /* Inputs alag-alag line me */
+        }
+
+        label {
+            text-align: left;
+            font-size: 14px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px #4CAF50;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #2E7D32;
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f1f8e9;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>🌱 Soil Fertility Prediction</h1>
+
+        <form action="/predict" method="post">
+
+            <label for="N">Nitrogen (N)</label>
+            <input type="number" step="any" name="N" id="N" required>
+
+            <label for="P">Phosphorus (P)</label>
+            <input type="number" step="any" name="P" id="P" required>
+
+            <label for="K">Potassium (K)</label>
+            <input type="number" step="any" name="K" id="K" required>
+
+            <label for="pH">Soil pH</label>
+            <input type="number" step="any" name="pH" id="pH" required>
+
+            <label for="OC">Organic Carbon (OC)</label>
+            <input type="number" step="any" name="OC" id="OC" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                {{ result }}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
